@@ -1,0 +1,6 @@
+@use '../../../styles/mixins/common';
+
+.books-section {
+  @include common.flex(column, flex-start, center, 32px);
+  width: 100%;
+}

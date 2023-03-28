@@ -1,0 +1,26 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.profile_main-section {
+  @include common.flex(column, flex-start, stretch, 90px);
+}
+
+.profile_user-bio {
+  @include common.flex(row, flex-start, center, 30px);
+
+  @include common.media(vars.$tablet-small) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  & > h1 {
+    word-break: break-word;
+    max-width: 300px;
+
+    @include common.media(vars.$tablet-small) {
+      @include font.font(26px, 36px, 500);
+      text-align: center;
+    }
+  }
+}

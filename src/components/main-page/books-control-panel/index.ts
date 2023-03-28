@@ -1,0 +1,1 @@
+export { BooksControlPanel } from './BooksControlPanel';

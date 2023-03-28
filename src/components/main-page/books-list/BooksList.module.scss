@@ -1,0 +1,11 @@
+@use '../../../styles/vars';
+
+.books_container {
+  width: 100%;
+
+  & > h3 {
+    margin-top: 200px;
+    text-align: center;
+    color: vars.$gray;
+  }
+}

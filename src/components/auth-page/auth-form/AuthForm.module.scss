@@ -1,0 +1,36 @@
+@use '../../../styles/mixins/auth';
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.auth-form {
+  @include common.flex(column, flex-start, stretch, 30px);
+}
+
+.auth-form__inputs-list {
+  @include common.flex(column, flex-start, stretch, 20px);
+}
+
+.auth-form__info-box {
+  @include font.info(vars.$large);
+  padding-left: 10px;
+
+  & > p {
+    color: vars.$hint-error;
+    height: 16px;
+  }
+
+  & > a {
+    width: fit-content;
+    color: vars.$gray;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      border-color: vars.$gray;
+    }
+  }
+}
+
+.auth-form__submit-box {
+  @include auth.submit-box;
+}

@@ -1,0 +1,15 @@
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.booked-book__container {
+  position: relative;
+  overflow: hidden;
+  box-shadow: vars.$plate-shadow;
+  border-radius: 10px;
+
+  & .button_reset-booking {
+    @include font.font(12px, 18px, 600);
+    letter-spacing: 0.2px;
+    width: 200px;
+  }
+}

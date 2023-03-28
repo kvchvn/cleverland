@@ -1,0 +1,20 @@
+@use '../../../styles/mixins/auth';
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.reg-form__heading-box {
+  @include common.flex(column, flex-start, flex-start, 10px);
+
+  & > p {
+    @include font.subtitle(vars.$small);
+  }
+}
+
+.reg-form {
+  @include common.flex(column, flex-start, stretch, 30px);
+}
+
+.reg-form__submit-box {
+  @include auth.submit-box;
+}

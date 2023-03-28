@@ -1,0 +1,1 @@
+export { PrivateRoutesLayout } from './PrivateRoutesLayout';

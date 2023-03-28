@@ -1,0 +1,26 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.wrapper {
+  position: relative;
+  min-width: 800px;
+  margin: 0 165px;
+
+  @include common.media(vars.$laptop-large, min-width) {
+    max-width: vars.$laptop;
+    margin: 0 auto;
+  }
+
+  @include common.media(vars.$laptop-medium) {
+    min-width: 640px;
+    margin: 0 65px;
+  }
+
+  @include common.media(vars.$tablet) {
+    min-width: auto;
+  }
+
+  @include common.media(vars.$mobile) {
+    margin: 0 15px;
+  }
+}

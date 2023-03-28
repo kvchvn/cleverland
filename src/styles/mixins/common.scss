@@ -1,0 +1,23 @@
+@use "../vars";
+
+@mixin flex($direction, $justify, $align, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin background($url, $isMask: false) {
+  @if ($isMask) {
+    mask: url($url) no-repeat 50% 50% / contain;
+  } @else {
+    background: url($url) no-repeat 50% 50% / contain;
+  }
+}
+
+@mixin media($device, $property: max-width) {
+  @media screen and ($property: $device) {
+    @content;
+  }
+}

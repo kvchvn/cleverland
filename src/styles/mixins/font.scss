@@ -1,0 +1,74 @@
+@use "common";
+@use '../vars';
+
+@mixin font($fontSize, $lineHeight, $fontWeight) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+}
+
+@mixin subtitle($type) {
+  font-weight: 600;
+  letter-spacing: 0.1px;
+
+  @if ($type == vars.$large) {
+    font-size: 16px;
+    line-height: 24px;
+  } @else if ($type == vars.$small) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@mixin body($type) {
+  font-weight: 400;
+  letter-spacing: 0.1px;
+
+  @if ($type == vars.$large) {
+    font-size: 16px;
+    line-height: 24px;
+  } @else if ($type == vars.$small) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  @include common.media(vars.$mobile) {
+    @if ($type == vars.$large) {
+      font-size: 15px;
+      line-height: 20px;
+    } @else if ($type == vars.$small) {
+      font-size: 12px;
+    }
+  }
+}
+
+@mixin info($type: vars.$small) {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+
+  @if ($type == vars.$large) {
+    font-weight: 500;
+  }
+}
+
+@mixin button($type) {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  @if ($type == vars.$large) {
+    font-size: 16px;
+    line-height: 150%;
+  } @else if ($type == vars.$small) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  @include common.media(vars.$mobile) {
+    @if ($type == vars.$large) {
+      line-height: 20px;
+    } @else if ($type == vars.$small) {
+      font-size: 12px;
+    }
+  }
+}

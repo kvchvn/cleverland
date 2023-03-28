@@ -1,0 +1,49 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.footer {
+  margin-top: auto;
+
+  // styles for wrapper
+  & > div {
+    @include common.flex(row, space-between, center);
+    margin-top: 60px;
+    padding: 15px 0;
+    border-top: 1px solid vars.$gray;
+
+    @include common.media(vars.$tablet-medium) {
+      @include common.flex(column, flex-start, center, 16px);
+      padding-bottom: 8px;
+    }
+
+    & > p {
+      text-align: center
+    }
+  }
+}
+
+.footer__socials {
+  @include common.flex(row, flex-start, center, 24px);
+
+  & > li {
+    width: 25px;
+    height: 25px;
+  }
+
+  & > li.socials_facebook {
+    @include common.background('../../../assets/svg/facebook_icon.svg');
+  }
+
+  & > li.socials_instagram {
+    @include common.background('../../../assets/svg/instagram_icon.svg');
+  }
+
+  & > li.socials_vk {
+    @include common.background('../../../assets/svg/vk_icon.svg');
+  }
+
+  & > li.socials_linkedin {
+    @include common.background('../../../assets/svg/linkedin_icon.svg');
+  }
+}

@@ -1,0 +1,38 @@
+@use '../../../styles/mixins/font';
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.header {
+  height: 105px;
+
+  @include common.media(vars.$tablet) {
+    height: 95px;
+  }
+
+  @include common.media(vars.$tablet-small) {
+    height: 75px;
+    margin-bottom: 10px;
+  }
+
+  // Styles for wrapper
+  & > div {
+    @include common.flex(row, flex-start, center);
+    height: 100%;
+    gap: 120px;
+
+    @include common.media(vars.$laptop-small) {
+      gap: 25px;
+    }
+  }
+}
+
+.header__logo {
+  @include common.background("../../../assets/svg/logo.svg");
+  display: block;
+  width: 165px;
+  height: 40px;
+
+  @include common.media(vars.$tablet-large) {
+    display: none;
+  }
+}

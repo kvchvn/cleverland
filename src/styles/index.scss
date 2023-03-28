@@ -1,0 +1,60 @@
+@use "mixins/common";
+@use "mixins/font";
+@use 'vars';
+
+@import "fonts";
+@import "normalize";
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 400;
+}
+
+body {
+  min-height: 100vh;
+  height: 100%;
+}
+
+#root {
+  @include common.flex(column, flex-start, stretch);
+  min-height: 100vh;
+}
+
+h1 {
+  @include font.font(52px, 64px, 500);
+  letter-spacing: 0.2px;
+
+  @include common.media(vars.$mobile) {
+    @include font.font(32px, 40px, 500);
+  }
+}
+
+h2 {
+  @include font.font(44px, 54px, 600);
+
+  @include common.media(vars.$mobile) {
+    @include font.font(26px, 36px, 600);
+  }
+}
+
+h3 {
+  @include font.font(32px, 40px, 700);
+  letter-spacing: 0.1px;
+
+  @include common.media(vars.$mobile) {
+    @include font.font(18px, 28px, 700);
+  }
+}
+
+h4 {
+  @include font.font(24px, 30px, 700);
+  letter-spacing: 0.1px;
+}
+
+h5 {
+  @include font.font(18px, 28px, 700);
+  letter-spacing: 0.1px;
+
+}

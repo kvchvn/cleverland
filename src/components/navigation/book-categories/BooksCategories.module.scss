@@ -1,0 +1,47 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/mixins/animation';
+@use '../../../styles/vars';
+
+.categories-list {
+  @include common.flex(column, flex-start, flex-start, 16px);
+  margin: 16px 0 0 20px;
+  max-height: 1000px;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.5s;
+
+  &.categories_hidden {
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.category-item {
+  & > a {
+    @include font.body(vars.$large);
+    display: inline;
+    word-wrap: break-word;
+
+    &:hover {
+      color: vars.$orange;
+    }
+
+    &.active {
+      font-weight: 700;
+      color: vars.$orange;
+    }
+  }
+
+  & > span {
+    margin-left: 6px;
+    color: vars.$gray;
+    font-weight: 400;
+  }
+
+  &:has(a.active) > span {
+    color: vars.$dark;
+  }
+}

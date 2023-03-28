@@ -1,0 +1,1 @@
+export { BookMainContent } from './BookMainContent';

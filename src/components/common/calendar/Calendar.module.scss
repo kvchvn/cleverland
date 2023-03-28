@@ -1,0 +1,45 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.calendar__container {
+  @include common.flex(column, flex-start, stretch);
+  margin: 0 auto;
+  padding: 10px;
+  width: 250px;
+  min-height: 260px;
+  border-radius: 15px;
+  box-shadow: vars.$plate-shadow;
+
+  & > article {
+    @include common.flex(row, space-between, center);
+  }
+}
+
+.calendar__controls {
+  @include common.flex(row, flex-start, center, 10px);
+
+  & > button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &.button-prev-month {
+      @include common.background('../../assets/svg/arrow_down.svg');
+      transform: rotate(0.5turn);
+      transform-origin: center;
+
+      &:active {
+        transform: scale(0.9) rotate(0.5turn);
+      }
+    }
+
+    &.button-next-month {
+      @include common.background('../../assets/svg/arrow_down.svg');
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@use '../../../styles/mixins/common';
+
+.star {
+  @include common.background('../../assets/svg/star_unfilled.svg');
+  width: 100%;
+  height: 100%;
+  transition: transform 0.25s;
+
+  & > span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: background 0.1s;
+  }
+
+  &.star_hovered {
+    & > span {
+      @include common.background('../../assets/svg/star_filled.svg');
+    }
+  }
+
+  &.star_chosen {
+    background: none;
+    transform: scale(0.9) rotateZ(5deg);
+
+    & > span {
+      @include common.background('../../assets/svg/star_filled.svg');
+    }
+  }
+}

@@ -1,0 +1,146 @@
+@use 'sass:math';
+@use '../../../styles/vars';
+@use '../../../styles/mixins/common';
+
+$nav-height: 40px;
+$nav-height-mobile: 32px;
+$icon-size: 16px;
+
+.books-control-panel {
+  @include common.flex(row, flex-start, center, 16px);
+  width: 100%;
+  height: $nav-height;
+
+  @include common.media(vars.$tablet-medium) {
+    padding: 1px;
+    overflow: hidden;
+
+    &:has(.hidden) {
+      gap: 0;
+    }
+  }
+
+}
+
+.books-control-panel__sort-controls {
+  position: relative;
+  padding-left: 40px;
+  padding-right: 16px;
+  display: block;
+  width: 150px;
+  height: $nav-height;
+  line-height: $nav-height;
+  color: vars.$gray;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: vars.$plate-shadow;
+  cursor: pointer;
+  transition: all 1s;
+
+  @include common.media(vars.$tablet-medium) {
+    padding: 0;
+    width: 100%;
+    max-width: $nav-height-mobile;
+    height: $nav-height-mobile;
+    font-size: 0;
+  }
+
+  & > input {
+    display: none;
+  }
+
+  // icon
+  &::before {
+    @include common.background('../../../assets/svg/sort-desc.svg', $isMask: true);
+    position: absolute;
+    top: math.div($nav-height - $icon-size, 2);
+    left: math.div($nav-height - $icon-size, 2);
+    content: '';
+    display: block;
+    width: $icon-size;
+    height: $icon-size;
+    background-color: vars.$gray;
+    transition: background 0.25s;
+
+    @include common.media(vars.$tablet-medium) {
+      top: math.div($nav-height-mobile - $icon-size, 2);
+      left: math.div($nav-height-mobile - $icon-size, 2);
+    }
+  }
+
+  &:hover::before {
+    background-color: vars.$orange;
+  }
+
+  &:has(input:checked)::before {
+    @include common.background('../../../assets/svg/sort-asc.svg', $isMask: true);
+  }
+}
+
+.books-control-panel__view-controls {
+  @include common.flex(row, center, center, 16px);
+  margin-left: auto;
+  max-width: 100px;
+  transition: all 1s;
+
+  & > label {
+    @include common.flex(row, center, center);
+    width: $nav-height;
+    height: $nav-height;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-shadow: vars.$plate-shadow;
+    transition: background-color 0.25s;
+
+    @include common.media(vars.$tablet-medium) {
+      width: $nav-height-mobile;
+      height: $nav-height-mobile;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: vars.$gray;
+      transition: background-color 0.25s;
+    }
+
+    &[for="table"]::before {
+      @include common.background('../../../assets/svg/table.svg', $isMask: true);
+    }
+
+    &[for="list"]::before {
+      @include common.background('../../../assets/svg/burger.svg', $isMask: true);
+    }
+
+    &:hover::before {
+      background: vars.$orange-gradient;
+    }
+
+    &:has(input:checked):hover::before {
+      background: vars.$white;
+    }
+
+    &:has(input:checked) {
+      background: vars.$orange-gradient;
+    }
+
+    &:has(input:checked)::before {
+      background-color: vars.$white;
+    }
+
+    & > input {
+      display: none;
+    }
+  }
+}
+
+// if search box is expanded
+.hidden {
+  @include common.media(vars.$tablet-medium) {
+    transform: translateX(400px);
+    opacity: 0;
+    max-width: 0;
+  }
+}

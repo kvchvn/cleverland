@@ -1,0 +1,52 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.detailed-info__list {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: repeat(5, 25px);
+  grid-auto-flow: column;
+  gap: 20px 100px;
+
+  @include common.media(vars.$laptop-medium) {
+    grid-template-columns: 290px auto;
+    column-gap: 30px;
+  }
+
+  @include common.media(vars.$tablet) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    column-gap: 0;
+  }
+
+  & > li {
+    @include common.flex(row, flex-start, flex-start);
+    @include font.body(vars.$large);
+
+    @include common.media(vars.$laptop-medium) {
+      @include font.body(vars.$small);
+    }
+
+    @include common.media(vars.$tablet) {
+      @include font.info(vars.$small);
+    }
+
+    & > span {
+      @include font.subtitle(vars.$large);
+      flex-shrink: 0;
+      width: 190px;
+      color: vars.$gray;
+
+      @include common.media(vars.$laptop-medium) {
+        @include font.subtitle(vars.$small);
+        width: 140px;
+      }
+
+      @include common.media(vars.$tablet) {
+        @include font.info(vars.$large);
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use '../../styles/mixins/common';
+
+.not-found-page__main {
+  @include common.flex(row, center, center);
+  height: 100vh;
+  overflow: hidden;
+
+  & > section {
+    margin: 0;
+  }
+}

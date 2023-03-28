@@ -1,0 +1,88 @@
+@use "../../../styles/mixins/font";
+@use "../../../styles/mixins/common";
+@use "../../../styles/mixins/animation";
+@use "../../../styles/vars";
+
+@keyframes appearance {
+  from {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.toast__container {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.toast__content-container {
+  @include common.flex(row, flex-start, center);
+  @include font.subtitle(vars.$large);
+  @include animation.setAnimation(appearance, 1s);
+  padding: 20px 35px;
+  min-height: 80px;
+  border: 2px solid;
+  border-radius: 5px;
+
+  @include common.media(vars.$tablet) {
+    @include font.subtitle(vars.$small);
+    padding: 15px 20px;
+  }
+
+  &.toast_success {
+    background-color: vars.$success-secondary;
+    border-color: vars.$success-primary;
+  }
+
+  &.toast_error {
+    background-color: vars.$error-secondary;
+    border-color: vars.$error-primary;
+  }
+}
+
+.toast__content {
+  @include common.flex(row, flex-start, center, 30px);
+  width: 100%;
+
+  & > span {
+    flex-shrink: 0;
+    align-self: flex-start;
+    display: block;
+    width: 30px;
+    height: 30px;
+
+    @include common.media(vars.$tablet) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &.toast_success > span {
+    @include common.background('../../assets/svg/success_mark.svg');
+  }
+
+  &.toast_error > span {
+    @include common.background('../../assets/svg/error_mark.svg');
+  }
+
+  & > button {
+    @include common.background('../../assets/svg/close.svg');
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-left: auto;
+    width: 20px;
+    height: 30px;
+
+    @include common.media(vars.$tablet) {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

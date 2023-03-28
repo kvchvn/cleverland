@@ -1,0 +1,33 @@
+@use '../../styles/mixins/common';
+@use '../../styles/vars';
+
+.book-page__main {
+  @include common.flex(column, flex-start, stretch, 42px);
+  margin-top: 25px;
+
+  @include common.media(vars.$mobile) {
+    margin-top: 10px;
+  }
+
+  // styles for wrapper
+  & > div {
+    @include common.flex(column, flex-start, stretch, 42px);
+
+    // styles for MainNavigation
+    & > nav {
+      top: -130px;
+
+      @include common.media(vars.$tablet-large, min-width) {
+        display: none;
+      }
+    }
+
+    @include common.media(vars.$tablet) {
+      gap: 52px;
+    }
+
+    @include common.media(vars.$mobile) {
+      gap: 42px;
+    }
+  }
+}

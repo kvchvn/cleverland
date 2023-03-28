@@ -1,0 +1,82 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.book-sub-content__section {
+  @include common.flex(column, flex-start, stretch, 60px);
+
+  @include common.media(vars.$tablet) {
+    gap: 50px;
+  }
+
+  @include common.media(vars.$mobile) {
+    gap: 40px;
+  }
+}
+
+.book-sub-content__article {
+  @include common.flex(column, flex-start, stretch, 15px);
+
+  & > h5 {
+    width: fit-content;
+
+    &:has(span) {
+      @include common.flex(row, flex-start, center, 5px);
+      flex-wrap: wrap;
+      width: 150px;
+
+      & > span {
+        display: inline-block;
+        @include font.body(vars.$large);
+        color: vars.$gray;
+      }
+
+      & > button {
+        display: inline-block;
+      }
+    }
+
+
+    &::after {
+      margin-top: 15px;
+      flex-shrink: 0;
+      content: '';
+      display: block;
+      width: 350px;
+      height: 1px;
+      background-color: vars.$lightgray;
+
+      @include common.media(vars.$mobile-medium) {
+        margin-top: 10px;
+        width: 250px;
+      }
+    }
+
+  }
+
+
+  @include common.media(vars.$mobile-medium) {
+    gap: 10px;
+  }
+}
+
+.book-sub-content__rating {
+  @include common.flex(row, flex-start, center, 25px);
+  @include font.body(vars.$small);
+  width: 220px;
+  height: 30px;
+  color: vars.$gray;
+
+  & > ul {
+    @include common.flex(row, flex-start, center, 10px);
+    width: 150px;
+    height: 100%;
+  }
+
+  & > span {
+    @include font.font(18px, 30px, 700);
+    display: block;
+    height: 100%;
+    color: vars.$dark;
+  }
+}

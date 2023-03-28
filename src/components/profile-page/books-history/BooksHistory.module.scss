@@ -1,0 +1,35 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/mixins/button';
+@use '../../../styles/vars';
+
+.slider {
+  width: 100%;
+}
+
+.slider__slide {
+  padding: 5px;
+  min-width: 190px;
+  max-width: 260px;
+
+  @include common.media(760px) {
+    max-width: 50%;
+  }
+
+  @include common.media(vars.$tablet-small) {
+    max-width: 100%;
+  }
+}
+
+.books-history__book-container {
+  width: 100%;
+
+  & .button {
+    @include font.font(12px, 18px, 600);
+    letter-spacing: 0.2px;
+
+    &.button_edit {
+      @include button.button-secondary;
+    }
+  }
+}

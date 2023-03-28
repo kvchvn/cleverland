@@ -1,0 +1,23 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.swiper-wrapper > .swiper-slide.swiper-slide-thumb-active > div {
+  border: 2px solid vars.$orange;
+}
+
+div.swiper-pagination.swiper-pagination-bullets.swiper-pagination-clickable {
+  position: static;
+  height: 20px;
+  transform: none;
+
+  & > .swiper-pagination-bullet {
+    top: 5px;
+    background-color: vars.$gray;
+    opacity: 1;
+
+    &.swiper-pagination-bullet-active {
+      transform: scale(1.2);
+      background-color: vars.$dark;
+    }
+  }
+}

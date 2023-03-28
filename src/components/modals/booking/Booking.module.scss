@@ -1,0 +1,35 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/mixins/button';
+@use '../../../styles/vars';
+
+.box {
+  @include common.flex(column, flex-start, center, 30px);
+  text-align: center;
+
+  & > h4 {
+    @include common.media(vars.$mobile) {
+      @include font.font(18px, 28px, 700);
+    }
+  }
+}
+
+.button {
+  @include font.button(vars.$large);
+  width: 100%;
+  height: 50px;
+
+  @include common.media(vars.$tablet-small) {
+    @include font.button(vars.$small);
+    height: 40px;
+  }
+
+  &.set {
+    @include button.button-primary;
+  }
+
+  &.reset {
+    @include button.button-secondary;
+
+  }
+}

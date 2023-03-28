@@ -1,0 +1,86 @@
+@use 'common';
+@use '../vars';
+
+@mixin button-common {
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+
+  &:active:not(:disabled) {
+    box-shadow: vars.$gold-shadow;
+  }
+}
+
+@mixin button-primary {
+  @include button-common;
+  background: vars.$orange-gradient;
+  color: vars.$white;
+
+  &:active:not(:disabled) {
+    background: vars.$darkorange-gradient;
+  }
+
+  &:disabled {
+    background: vars.$lightgray;
+  }
+}
+
+@mixin button-secondary {
+  @include button-common;
+  background: transparent;
+  border: 1px solid vars.$dark20;
+  color: vars.$dark;
+
+  &:hover:not(:disabled) {
+    background: transparent;
+    border-color: vars.$gray;
+  }
+
+  &:disabled {
+    background: #F9F9FA;
+    color: vars.$gray;
+  }
+}
+
+@mixin button-tertiary-arrow {
+  @include common.background('../../assets/svg/arrow_right.svg', $isMask: true);
+  content: '';
+  display: block;
+  width: 20px;
+  height: 100%;
+  background-color: vars.$gray;
+}
+
+@mixin button-tertiary($type: vars.$direct) {
+  @include button-common;
+  @include common.flex(row, flex-start, center, 10px);
+  border: none;
+
+  @if ($type == vars.$direct) {
+    &::after {
+      @include button-tertiary-arrow;
+    }
+  }
+
+  @if ($type == vars.$reverse) {
+    &::before {
+      @include button-tertiary-arrow;
+      transform: rotateZ(180deg);
+    }
+  }
+
+  &:hover::after,
+  &:hover::before {
+    background-color: vars.$dark;
+  }
+
+  &:active:not(:disabled) {
+    color: vars.$orange;
+    box-shadow: none;
+
+    &::after,
+    &::before {
+      background-color: vars.$orange;
+    }
+  }
+}

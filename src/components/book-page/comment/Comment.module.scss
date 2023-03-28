@@ -1,0 +1,53 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.comment-box {
+  @include common.flex(row, flex-start, flex-start, 16px);
+  flex-wrap: wrap;
+
+  @include common.media(vars.$mobile-medium) {
+    gap: 8px;
+  }
+
+  & > p {
+    @include font.body(vars.$large);
+  }
+}
+
+.comment__author-box {
+  @include common.flex(row, flex-start, center, 24px);
+
+  @include common.media(vars.$mobile-medium) {
+    @include common.flex(column, center, flex-start);
+    flex-wrap: wrap;
+    column-gap: 16px;
+    height: 50px;
+  }
+
+  & > p {
+    @include font.body(vars.$large);
+    color: vars.$darkgray;
+  }
+}
+
+.author-box__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  & img {
+    object-fit: cover;
+  }
+}
+
+.comment__rating-box {
+  width: 100%;
+
+  & > ul {
+    @include common.flex(row, flex-start, center, 10px);
+    width: 150px;
+    height: 25px;
+  }
+}

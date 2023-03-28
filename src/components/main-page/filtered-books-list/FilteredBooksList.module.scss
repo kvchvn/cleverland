@@ -1,0 +1,21 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.books-list {
+  display: grid;
+  width: 100%;
+}
+
+.books-list.table-view {
+  grid-template-columns: repeat(auto-fill, minmax(190px, 0.5fr));
+  gap: 24px 22px;
+
+  @include common.media(vars.$tablet) {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  }
+}
+
+.books-list.list-view {
+  grid-template-columns: 1fr;
+  gap: 15px;
+}

@@ -1,0 +1,5 @@
+@use '../../../styles/mixins/common';
+
+.reg-form__inputs-list {
+  @include common.flex(column, flex-start, stretch, 20px);
+}

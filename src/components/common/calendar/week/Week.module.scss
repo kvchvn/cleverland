@@ -1,0 +1,40 @@
+@use '../../../../styles/mixins/common';
+@use '../../../../styles/mixins/font';
+@use '../../../../styles/vars';
+
+.week__dates-list {
+  @include common.flex(row, space-between, center);
+  text-align: center;
+
+  & > li {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    &.date-weekend {
+      background-color: vars.$error-secondary;
+    }
+
+    &.date-today,
+    &.date-today > button:disabled {
+      color: vars.$orange;
+    }
+
+    &.date-active {
+      background: vars.$orange-gradient;
+      color: vars.$white;
+    }
+
+    & > button {
+      width: 100%;
+      height: 100%;
+      color: inherit;
+
+      &:disabled {
+        color: vars.$gray;
+      }
+    }
+  }
+}

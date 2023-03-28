@@ -1,0 +1,1 @@
+export { ProfileFormInputs } from './ProfileFormInputs';

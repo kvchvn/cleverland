@@ -1,0 +1,22 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.dropdown-button {
+  @include common.background('../../../assets/svg/arrow_down.svg', $isMask: true);
+  margin-left: auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: vars.$dark;
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.25s;
+
+  &.active {
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+    background: vars.$orange-gradient;
+  }
+}

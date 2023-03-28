@@ -1,0 +1,61 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/animation';
+@use '../../../styles/vars';
+
+@keyframes rotation {
+  0% {
+    transform: rotateZ(0deg);
+    filter: contrast(1);
+  }
+  25% {
+    transform: rotateZ(360deg);
+    filter: contrast(0.2);
+
+  }
+  50% {
+    transform: rotateZ(720deg);
+    filter: contrast(1);
+  }
+  75% {
+    transform: rotateZ(1080deg);
+    filter: contrast(0.2);
+
+  }
+  100% {
+    transform: rotateZ(1440deg);
+    filter: contrast(1);
+  }
+}
+
+.loading__overlay {
+  @include common.flex(row, center, center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(54, 54, 54, 0.3);
+  backdrop-filter: blur(5px);
+  z-index: 10;
+}
+
+.loading__spinner {
+  @include common.background('../../assets/svg/spinner.svg', $isMask: true);
+  @include animation.setAnimation(rotation, 4s, infinite, linear);
+  position: relative;
+  display: block;
+  width: 70px;
+  height: 70px;
+  background: vars.$orange-gradient;
+  z-index: 11;
+
+  @include common.media(vars.$tablet) {
+    width: 45px;
+    height: 45px;
+  }
+
+  @include common.media(vars.$mobile) {
+    width: 25px;
+    height: 25px;
+  }
+}

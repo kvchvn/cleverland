@@ -1,0 +1,26 @@
+@use '../../../styles/mixins/font';
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.handed-book__container {
+  position: relative;
+  overflow: hidden;
+  box-shadow: vars.$plate-shadow;
+  border-radius: 10px;
+}
+
+.handed-book__date {
+  @include common.flex(column, center, center);
+  height: 100%;
+
+  & > p {
+    @include font.font(24px, 30px, 700);
+    letter-spacing: 0.1px;
+    text-transform: uppercase;
+    color: vars.$error-primary;
+
+    @include common.media(vars.$tablet-large) {
+      @include font.font(16px, 20px, 600);
+    }
+  }
+}

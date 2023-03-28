@@ -1,0 +1,12 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.profile-form__inputs-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px 30px;
+
+  @include common.media(vars.$tablet-medium) {
+    grid-template-columns: 1fr;
+  }
+}

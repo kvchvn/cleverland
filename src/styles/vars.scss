@@ -1,0 +1,62 @@
+// colors
+$dark: #363636;
+$dark30: #3636364C;
+$dark20: #BFC4C9;
+
+$orange: #F83600;
+
+$darkgray: #727272;
+$gray: #A7A7A7;
+$lightgray: #EBEBEB;
+$lightestgray: #F9F9FA;
+
+$white: #FFFFFF;
+
+$error-primary: #FF5253;
+$error-secondary: #FEEBEA;
+
+$success-primary: #00CA71;
+$success-secondary: #EBF9F1;
+
+$hint-error: #F42C4F;
+
+$violet: #6E76F1;
+
+// shadows and gradients
+
+$orange-gradient: linear-gradient(231.58deg, rgb(248, 54, 0) -53.35%, rgb(249, 212, 35) 297.76%);
+$darkorange-gradient: linear-gradient(235deg, #F83600 15%, #F9D423 325%);
+$gray-shadow: 4px 4px 4px #3636360C, -4px 4px 4px #3636360C;
+$gold-shadow: 0px 3px 4px #DE7D0B33, 0px 1px 10px #F9590833;
+$plate-shadow: 0px 2px 4px #BFC4C933, 0px 3px 4px #BFC4C92D, 0px 1px 5px #BFC4C93D;
+$button-shadow: 0px 2px 5px #36363619;
+
+// breakpoints
+$laptop-large: 1600px;
+$laptop: 1440px;
+$laptop-medium: 1250px;
+$laptop-small: 1100px;
+
+$tablet-large: 900px;
+$tablet: 770px;
+$tablet-medium: 680px;
+$tablet-small: 600px;
+
+$mobile: 480px;
+$mobile-medium: 400px;
+$mobile-small: 350px;
+
+// button types
+$button-primary: 'primary';
+$button-secondary: 'secondary';
+$button-tertiary: 'tertiary';
+$button-tertiary-reverse: 'tertiary-reverse';
+
+// sizes for font, button
+$small: 'small';
+$large: 'large';
+
+// others
+$direct: 'direct';
+$reverse: 'reverse';
+

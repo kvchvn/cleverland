@@ -1,0 +1,97 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/button';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.error-boundary__main {
+  background: vars.$dark;
+  height: 100vh;
+
+  //styles for wrapper
+  & > div {
+    @include common.flex(column, flex-start, center, 30px);
+    padding-top: 100px;
+    height: 100%;
+    color: vars.$white;
+
+    @include common.media(vars.$laptop-small) {
+      padding-top: 50px;
+    }
+
+    & > h4 {
+      background: vars.$orange-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include common.media(vars.$tablet-small) {
+        @include font.font(18px, 24px, 700);
+      }
+    }
+
+    & > pre {
+      padding: 5px;
+      width: 500px;
+      max-height: 70px;
+      white-space: break-spaces;
+      border-radius: 5px;
+      background: vars.$darkgray;
+      overflow: auto;
+
+      @include common.media(vars.$tablet-small) {
+        width: 100%;
+      }
+    }
+
+    & > textarea {
+      @include font.body(vars.$large);
+      padding: 10px;
+      min-width: 500px;
+      max-width: 500px;
+      min-height: 200px;
+      max-height: 300px;
+      border: 1px solid #000000;
+      border-radius: 10px;
+      outline: none;
+
+      @include common.media(vars.$tablet-small) {
+        @include font.body(vars.$small);
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 300px;
+      }
+
+      &:disabled {
+        background: vars.$lightestgray;
+      }
+
+      &::placeholder {
+        font-size: 0.85em;
+      }
+
+      &:focus {
+        border: 1px solid vars.$orange;
+        caret-color: vars.$orange;
+      }
+    }
+
+    & > button {
+      @include font.button(vars.$large);
+      width: 350px;
+      height: 50px;
+
+      @include common.media(vars.$tablet-small) {
+        @include font.button(vars.$small);
+        width: 250px;
+        height: 40px;
+      }
+
+      &.message_sent {
+        @include button.button-secondary;
+      }
+
+      &.link_to-main-page {
+        @include button.button-primary;
+      }
+    }
+  }
+}

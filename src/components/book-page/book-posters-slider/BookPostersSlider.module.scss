@@ -1,0 +1,113 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+.book-posters__box {
+  @include common.flex(column, flex-start, center, 16px);
+  grid-row: 1 / 3;
+  overflow: hidden;
+
+  @include common.media(vars.$tablet-large) {
+    grid-row: 1 / 2;
+    row-gap: 25px;
+  }
+
+  @include common.media(vars.$tablet-small) {
+    margin: 0 auto;
+    width: 200px
+  }
+}
+
+.book-posters__single-poster {
+  object-fit: contain;
+  width: 100%;
+  height: 595px;
+  border-radius: 5px;
+
+  @include common.media(vars.$laptop-medium) {
+    height: 450px;
+  }
+
+  @include common.media(vars.$tablet-large) {
+    height: 200px;
+  }
+
+  @include common.media(vars.$tablet-small) {
+    height: 260px;
+  }
+}
+
+.book-posters__slider {
+  position: relative;
+  width: 100%;
+}
+
+.book-posters__slider.slider_main {
+  & .slider__slide > div {
+    min-width: 440px;
+    min-height: 650px;
+
+    @include common.media(vars.$laptop-medium) {
+      min-width: 360px;
+      min-height: 520px;
+    }
+
+    @include common.media(vars.$tablet-large) {
+      min-width: 130px;
+      min-height: 190px;
+    }
+
+    @include common.media(vars.$tablet-small) {
+      min-width: 200px;
+      min-height: 280px;
+    }
+  }
+
+  @include common.media(vars.$tablet-large) {
+    @include common.flex(column, flex-start, center, 20px);
+  }
+}
+
+.slider_sub {
+  height: 100px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 25px;
+    height: 100%;
+    display: block;
+    z-index: 2;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, vars.$white, transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to right, transparent, vars.$white);
+  }
+
+  @include common.media(vars.$laptop-medium) {
+    height: 85px;
+  }
+
+  @include common.media(vars.$tablet-large) {
+    height: 0;
+  }
+}
+
+.slider__slide > div {
+  border-radius: 5px;
+}
+
+.slider_sub .slider__slide {
+  & > div {
+    position: relative;
+    height: 100%;
+    border: 2px solid vars.$gray;
+  }
+}

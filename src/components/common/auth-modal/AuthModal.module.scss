@@ -1,0 +1,36 @@
+@use '../../../styles/mixins/button';
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.auth-modal {
+  @include common.flex(column, flex-start, stretch, 30px);
+  margin: 0 auto;
+  max-width: 400px;
+  text-align: center;
+
+  & > h4 {
+    @include common.media(vars.$mobile) {
+      @include font.font(18px, 28px, 700);
+    }
+  }
+
+  & > p {
+    @include font.body(vars.$large);
+  }
+
+  & > button,
+  & > a {
+    @include button.button-primary;
+    @include font.button(vars.$large);
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+
+    @include common.media(vars.$mobile) {
+      @include font.button(vars.$small);
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+}

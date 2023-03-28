@@ -1,0 +1,1 @@
+export { BookPostersSlider } from './BookPostersSlider';

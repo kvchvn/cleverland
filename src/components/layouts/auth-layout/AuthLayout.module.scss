@@ -1,0 +1,35 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.auth-layout__wrapper {
+  @include common.flex(column, center, center, 20px);
+  padding: 0 15px;
+  height: 100vh;
+  background: vars.$orange-gradient;
+
+  & > h4 {
+    @include font.font(32px, 40px, 700);
+    text-align: center;
+    color: vars.$white;
+
+    @include common.media(vars.$tablet-small) {
+      @include font.font(18px, 28px, 700);
+    }
+  }
+}
+
+.auth-layout__main {
+  @include common.flex(column, space-between, stretch, 30px);
+  padding: 50px;
+  position: relative;
+  max-width: 530px;
+  width: 100%;
+  background-color: vars.$white;
+  border-radius: 15px;
+  overflow: hidden;
+
+  @include common.media(vars.$tablet-small) {
+    padding: 25px 15px;
+  }
+}

@@ -1,0 +1,78 @@
+@use '../../../styles/mixins/font';
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/animation';
+@use '../../../styles/vars';
+
+@keyframes appearance {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.select-box {
+  position: relative;
+  min-width: 100px;
+}
+
+.select__button-expand {
+  @include common.flex(row, space-between, center, 5px);
+  @include font.body(vars.$large);
+  padding: 0 5px;
+  width: 100%;
+  height: 30px;
+  text-align: left;
+  color: vars.$gray;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: vars.$lightestgray;
+  }
+
+  &::after {
+    @include common.background('../../assets/svg/arrow_dropdown.svg', $isMask: true);
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 100%;
+    background-color: vars.$gray;
+    transition: transform 0.25s;
+  }
+
+  &.select_expanded::after {
+    transform: rotateZ(180deg);
+  }
+}
+
+.select__options-list {
+  @include common.flex(column, flex-start, flex-start, 5px);
+  @include font.body(vars.$large);
+  @include animation.setAnimation(appearance, 0.25s, 1);
+  margin-top: 5px;
+  padding: 5px;
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 200px;
+  background-color: vars.$white;
+  border-radius: 10px;
+  z-index: 9;
+  box-shadow: vars.$plate-shadow;
+  overflow: auto;
+
+  & button {
+    color: vars.$gray;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &.select_expanded {
+    display: flex;
+  }
+}

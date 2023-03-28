@@ -1,0 +1,46 @@
+@use '../../../styles/mixins/button';
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.not-found-section {
+  margin-top: 100px;
+
+  // styles for wrapper
+  & > div {
+    @include common.flex(column, flex-start, center, 30px);
+
+    & > h2 {
+      font-size: 10em;
+      line-height: 1;
+      background: vars.$darkorange-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 20px;
+      opacity: 0.8;
+
+      @include common.media(vars.$mobile) {
+        font-size: 7em;
+      }
+    }
+
+    & > h4 {
+      @include common.media(vars.$mobile) {
+        @include font.font(20px, 24px, 600);
+      }
+    }
+
+    & > button {
+      @include button.button-secondary;
+      @include font.button(vars.$large);
+      width: 350px;
+      height: 50px;
+
+      @include common.media(vars.$mobile) {
+        @include font.button(vars.$small);
+        width: 280px;
+        height: 40px;
+      }
+    }
+  }
+}

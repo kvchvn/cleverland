@@ -1,0 +1,24 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/vars';
+
+.books-management__container {
+  @include common.flex(column, flex-start, stretch, 90px);
+
+  & > li {
+    @include common.flex(column, flex-start, stretch);
+
+    & > h4 {
+      @include common.media(vars.$tablet-small) {
+        @include font.font(18px, 28px, 700);
+      }
+    }
+
+    & > p {
+      @include font.body(vars.$large);
+      margin-top: 5px;
+      margin-bottom: 30px;
+      color: vars.$gray;
+    }
+  }
+}

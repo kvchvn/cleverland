@@ -1,0 +1,126 @@
+@use 'sass:math';
+@use '../../../styles/mixins/common';
+@use '../../../styles/vars';
+
+$nav-height: 40px;
+$nav-height-mobile: 32px;
+$icon-size: 16px;
+
+.search-box {
+  position: relative;
+  max-width: 350px;
+  min-width: 270px;
+  width: 40%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  box-shadow: vars.$plate-shadow;
+  overflow: hidden;
+  transition: all 1s;
+  z-index: 2;
+
+  // loupe icon
+  &::before {
+    @include common.background("../../../assets/svg/loupe.svg", $isMask: true);
+    position: absolute;
+    top: math.div($nav-height - $icon-size, 2);
+    left: math.div($nav-height - $icon-size, 2);
+    content: '';
+    display: block;
+    max-width: $icon-size;
+    width: 100%;
+    height: $icon-size;
+    background-color: vars.$gray;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.25s;
+    z-index: 2;
+
+    @include common.media(vars.$tablet-medium) {
+      top: math.div($nav-height-mobile - $icon-size, 2);
+      left: math.div($nav-height-mobile - $icon-size, 2);
+    }
+  }
+
+  @include common.media(vars.$tablet-medium) {
+    min-width: auto;
+    width: 100%;
+    max-width: $nav-height-mobile;
+    height: $nav-height-mobile;
+  }
+
+  &:is(:focus-within, :hover, :has(input:not(:placeholder-shown)))::before {
+    background-color: vars.$orange;
+  }
+
+  // cross icon
+  & > button {
+    @include common.background("../../../assets/svg/close.svg", $isMask: true);
+    position: absolute;
+    top: math.div($nav-height - $icon-size, 2);
+    right: math.div($nav-height - $icon-size, 2);
+    content: '';
+    display: block;
+    width: $icon-size;
+    height: $icon-size;
+    background: vars.$orange-gradient;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(1);
+    transition: all 0.5s;
+  }
+
+  // input type="search"
+  & > input {
+    padding-left: $nav-height;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    transition: all 0.5s;
+
+    @include common.media(vars.$tablet-medium) {
+      opacity: 0;
+    }
+
+    &::placeholder {
+      color: vars.$gray;
+    }
+
+    &:focus {
+      caret-color: vars.$orange;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+}
+
+.search-box.search_expanded {
+  @include common.media(vars.$tablet-medium) {
+    max-width: 100%;
+
+    &::before {
+      transform: scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    & > button {
+      visibility: visible;
+      opacity: 1;
+      top: math.div($nav-height-mobile - $icon-size, 2);
+      right: math.div($nav-height-mobile - $icon-size, 2);
+    }
+
+    & > input {
+      padding-left: 16px;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

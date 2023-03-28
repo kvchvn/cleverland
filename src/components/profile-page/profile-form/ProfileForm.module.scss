@@ -1,0 +1,48 @@
+@use '../../../styles/mixins/common';
+@use '../../../styles/mixins/font';
+@use '../../../styles/mixins/button';
+@use '../../../styles/vars';
+
+.profile-form__container {
+  @include common.flex(column, flex-start, stretch, 30px);
+}
+
+.profile-form__heading {
+  @include common.flex(column, flex-start, flex-start, 10px);
+
+  & > p {
+    @include font.body(vars.$large);
+    color: vars.$gray;
+  }
+}
+
+.profile-form {
+  @include common.flex(column, flex-start, stretch, 30px);
+}
+
+.profile-form__buttons-box {
+  @include common.flex(row, flex-start, flex-start, 30px);
+
+  @include common.media(vars.$tablet-medium) {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  & > button {
+    @include font.button(vars.$large);
+    width: 260px;
+    height: 50px;
+
+    @include common.media(vars.$tablet-medium) {
+      width: 100%;
+    }
+  }
+
+  & > .button_edit {
+    @include button.button-secondary;
+  }
+
+  & > .button_save {
+    @include button.button-primary;
+  }
+}
