@@ -1,4 +1,4 @@
-export const BASE_API_URL = 'https://strapi.cleverland.by';
+export const BASE_API_URL = 'https://library-cleverland-2jfze.ondigitalocean.app';
 
 export const API_ENDPOINTS = {
   categories: 'categories',
