@@ -66,7 +66,7 @@ export const ProfileForm = () => {
               className={styles.button_edit}
               data-test-id='edit-button'
             >
-              Редактировать
+              {isFormDisabled ? 'Редактировать' : 'Отменить'}
             </button>
             <button type='submit' disabled={isFormDisabled} className={styles.button_save} data-test-id='save-button'>
               Сохранить изменения
