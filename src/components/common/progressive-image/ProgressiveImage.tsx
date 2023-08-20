@@ -34,7 +34,7 @@ export const ProgressiveImage = ({ src, defaultSrc, alt }: ProgressiveImageProps
   return (
     <div className={complexStyles.imageBox}>
       <img
-        src={src ? `${BASE_API_URL}${src}` : defaultSrc}
+        src={src || defaultSrc}
         loading='lazy'
         alt={alt}
         onLoad={handleLoad}
